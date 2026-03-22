@@ -483,6 +483,43 @@ export default function SubcategoryPage() {
                                 }}
                             />
                         </div>
+                        <div className="grid gap-2">
+                            <Label>Select Sub Category</Label>
+
+                            <Popover open={open} onOpenChange={setOpen}>
+                                <PopoverTrigger asChild>
+                                    <Button variant="outline" className="w-full">
+                                        {formData.categoryId
+                                            ? categoryList.find((c) => c.id === formData.categoryId)?.name
+                                            : "Select sub category..."}
+                                        <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
+                                    </Button>
+                                </PopoverTrigger>
+
+                                <PopoverContent className="p-0">
+                                    <Command>
+                                        <CommandInput placeholder="Search..." />
+                                        <CommandGroup>
+                                            {categoryList.map((cat) => (
+                                                <CommandItem
+                                                    key={cat.id}
+                                                    value={cat.name}
+                                                    onSelect={() => {
+                                                        setFormData({ ...formData, categoryId: cat.id })
+                                                        setOpen(false)
+                                                    }}
+                                                >
+                                                    {cat.name}
+                                                    {formData.categoryId === cat.id && (
+                                                        <Check className="ml-auto h-4 w-4" />
+                                                    )}
+                                                </CommandItem>
+                                            ))}
+                                        </CommandGroup>
+                                    </Command>
+                                </PopoverContent>
+                            </Popover>
+                        </div>
                     </div>
                     <DialogFooter>
                         <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>

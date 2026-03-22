@@ -82,7 +82,6 @@ export function AppSidebar() {
           <div className="group-data-[collapsible=icon]:hidden">
             <ThemeSwitcher />
           </div>
-
         </div>
       </SidebarHeader>
       <SidebarContent>
