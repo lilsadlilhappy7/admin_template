@@ -39,7 +39,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
+import { ThemeSwitcher } from "@/components/ui/theme-switcher"
 
 const homeItems = [
   { title: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
@@ -63,13 +63,26 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="p-4">
-        <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-lg bg-foreground text-background">
-            <Command className="size-4" />
+        <div className="flex items-center justify-between">
+
+          {/* LEFT SIDE */}
+          <div className="flex items-center gap-2">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-foreground text-background">
+              <img
+                src="/logo/psa-npic.png"
+                alt="PSA NPIC"
+                className="size-5 object-contain"
+              />
+            </div>
+            <span className="font-semibold group-data-[collapsible=icon]:hidden">
+              PSA NPIC
+            </span>
           </div>
-          <span className="font-semibold group-data-[collapsible=icon]:hidden">
-            PSA NPIC
-          </span>
+          {/* RIGHT SIDE */}
+          <div className="group-data-[collapsible=icon]:hidden">
+            <ThemeSwitcher />
+          </div>
+
         </div>
       </SidebarHeader>
       <SidebarContent>

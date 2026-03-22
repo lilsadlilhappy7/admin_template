@@ -1,4 +1,4 @@
-
+"use client"
 
 import { Plus, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { SidebarTrigger } from "@/components/ui/sidebar"
+import { ThemeSwitcher } from "@/components/ui/theme-switcher" // ✅ ADD THIS
 
 export function DashboardHeader() {
   return (
@@ -18,25 +19,6 @@ export function DashboardHeader() {
         <SidebarTrigger className="-ml-2" />
         <h1 className="text-xl font-semibold">DashBoard</h1>
       </div>
-      {/* <div className="flex items-center gap-3">
-        <Select defaultValue="neutral">
-          <SelectTrigger className="w-[130px]">
-            <SelectValue placeholder="Select view" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="neutral">Neutral</SelectItem>
-            <SelectItem value="compact">Compact</SelectItem>
-            <SelectItem value="detailed">Detailed</SelectItem>
-          </SelectContent>
-        </Select>
-        <Button variant="ghost" size="icon">
-          <Trash2 className="size-4" />
-        </Button>
-        <Button>
-          <Plus className="size-4 mr-2" />
-          Quick Create
-        </Button>
-      </div> */}
     </header>
   )
 }

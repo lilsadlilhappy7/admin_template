@@ -66,7 +66,6 @@ type Subcategory = {
     id: string
     name: string
     image: string
-    status: "active" | "inactive"
     categoryId: string
     createdAt: string
     updatedAt: string
@@ -87,18 +86,18 @@ const categoryList: Category[] = [
 ]
 
 const initialSubCategories: Subcategory[] = [
-    { id: "1", name: "Cars for Sale", image: "/sub-img/cars-for-sale.png", status: "active", categoryId: "1", createdAt: "2024-01-15", updatedAt: "2024-01-15" },
-    { id: "2", name: "Phones", image: "/sub-img/phones.png", status: "active", categoryId: "2", createdAt: "2024-01-20", updatedAt: "2024-01-20" },
-    { id: "3", name: "Laptops", image: "/sub-img/laptops.png", status: "active", categoryId: "3", createdAt: "2024-02-01", updatedAt: "2024-02-01" },
-    { id: "4", name: "Washing Machines & Dryers", image: "/sub-img/washing-machines-dryers.png", status: "inactive", categoryId: "4", createdAt: "2024-02-10", updatedAt: "2024-02-10" },
-    { id: "5", name: "House For Sale", image: "/sub-img/house-for-sale.png", status: "active", categoryId: "5", createdAt: "2024-02-15", updatedAt: "2024-02-15" },
-    { id: "6", name: "Accounting", image: "/sub-img/accounting.png", status: "active", categoryId: "6", createdAt: "2024-03-01", updatedAt: "2024-03-01" },
-    { id: "7", name: "Financial Services", image: "/sub-img/financial-services.png", status: "active", categoryId: "7", createdAt: "2024-01-15", updatedAt: "2024-01-15" },
-    { id: "8", name: "Women's Fashion", image: "/sub-img/womens-fashion.png", status: "active", categoryId: "8", createdAt: "2024-01-20", updatedAt: "2024-01-20" },
-    { id: "9", name: "Tables & Desks", image: "/sub-img/tables-desks.png", status: "active", categoryId: "9", createdAt: "2024-02-01", updatedAt: "2024-02-01" },
-    { id: "10", name: "Musical Instruments", image: "/sub-img/musical-instruments.png", status: "inactive", categoryId: "10", createdAt: "2024-02-10", updatedAt: "2024-02-10" },
-    { id: "11", name: "Dogs", image: "/sub-img/dogs.png", status: "active", categoryId: "11", createdAt: "2024-02-15", updatedAt: "2024-02-15" },
-    { id: "12", name: "Meat", image: "/sub-img/meat.png", status: "active", categoryId: "12", createdAt: "2024-03-01", updatedAt: "2024-03-01" },
+    { id: "1", name: "Cars for Sale", image: "/sub-img/cars-for-sale.png", categoryId: "1", createdAt: "2024-01-15", updatedAt: "2024-01-15" },
+    { id: "2", name: "Phones", image: "/sub-img/phones.png", categoryId: "2", createdAt: "2024-01-20", updatedAt: "2024-01-20" },
+    { id: "3", name: "Laptops", image: "/sub-img/laptops.png", categoryId: "3", createdAt: "2024-02-01", updatedAt: "2024-02-01" },
+    { id: "4", name: "Washing Machines & Dryers", image: "/sub-img/washing-machines-dryers.png", categoryId: "4", createdAt: "2024-02-10", updatedAt: "2024-02-10" },
+    { id: "5", name: "House For Sale", image: "/sub-img/house-for-sale.png", categoryId: "5", createdAt: "2024-02-15", updatedAt: "2024-02-15" },
+    { id: "6", name: "Accounting", image: "/sub-img/accounting.png", categoryId: "6", createdAt: "2024-03-01", updatedAt: "2024-03-01" },
+    { id: "7", name: "Financial Services", image: "/sub-img/financial-services.png", categoryId: "7", createdAt: "2024-01-15", updatedAt: "2024-01-15" },
+    { id: "8", name: "Women's Fashion", image: "/sub-img/womens-fashion.png", categoryId: "8", createdAt: "2024-01-20", updatedAt: "2024-01-20" },
+    { id: "9", name: "Tables & Desks", image: "/sub-img/tables-desks.png", categoryId: "9", createdAt: "2024-02-01", updatedAt: "2024-02-01" },
+    { id: "10", name: "Musical Instruments", image: "/sub-img/musical-instruments.png", categoryId: "10", createdAt: "2024-02-10", updatedAt: "2024-02-10" },
+    { id: "11", name: "Dogs", image: "/sub-img/dogs.png", categoryId: "11", createdAt: "2024-02-15", updatedAt: "2024-02-15" },
+    { id: "12", name: "Meat", image: "/sub-img/meat.png", categoryId: "12", createdAt: "2024-03-01", updatedAt: "2024-03-01" },
 ]
 
 
@@ -132,7 +131,6 @@ export default function SubcategoryPage() {
             id: String(Date.now()),
             name: formData.name,
             image: formData.image,
-            status: "active",
             categoryId: formData.categoryId,
             createdAt: new Date().toISOString().split("T")[0],
             updatedAt: ""
@@ -315,7 +313,6 @@ export default function SubcategoryPage() {
                                     <TableHead>Name</TableHead>
                                     <TableHead>Image</TableHead>
                                     <TableHead>Category</TableHead>
-                                    <TableHead>Status</TableHead>
                                     <TableHead>Created</TableHead>
                                     <TableHead>Updated</TableHead>
                                     <TableHead>Action</TableHead>
@@ -354,10 +351,6 @@ export default function SubcategoryPage() {
                                             {
                                                 categoryList.find((cat) => cat.id === subcategory.categoryId)?.name
                                             }
-                                        </TableCell>
-
-                                        <TableCell>
-                                            <Badge>{subcategory.status}</Badge>
                                         </TableCell>
 
                                         <TableCell>{subcategory.createdAt}</TableCell>
